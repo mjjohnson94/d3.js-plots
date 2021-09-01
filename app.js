@@ -64,8 +64,8 @@ var chartGroup = svg.append("g")
     chartGroup.append("g")
       .call(leftAxis);
 
-    // Step 5: Create Circles
-    // ==============================
+    /// Creating Circles
+    
     var circlesGroup = chartGroup.selectAll("circle")
     .data(data)
     .enter()
@@ -84,13 +84,13 @@ var chartGroup = svg.append("g")
     .attr("x", x => xLinearScale(x.poverty))
     .attr("y", x => yLinearScale(x.healthcare))
     .attr('dy', 5)
-    // .attr('font-size', '10px')
-    // .attr('fill', 'black')
+    /// .attr('font-size', '10px')
+    /// .attr('fill', 'black')
     .text(function(x){return x.abbr});
     
 
-    // Step 6: Initialize tool tip
-    // ==============================
+    ///  Initialize tool tip
+   
     var toolTip = d3.tip()
     .attr("class", "tooltip")
     .offset([80, -60])
@@ -98,12 +98,12 @@ var chartGroup = svg.append("g")
       return (`${x.state}<br>Healthcare: ${x.healthcare}<br>Poverty: ${x.poverty}`);
     });
 
-    // Step 7: Create tooltip in the chart
-    // ==============================
+    /// Calling toolTip into the chartGroup
+    
     chartGroup.call(toolTip);
 
-    // Step 8: Create event listeners to display and hide the tooltip
-    // ==============================
+    /// Create event listeners 
+    
     textsGroup.on("click", function(data) {
       toolTip.show(data, this);
     })
